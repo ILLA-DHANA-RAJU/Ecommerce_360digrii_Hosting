@@ -3,7 +3,7 @@ setInterval(function () {
   if (msg) {
     msg.style.display = 'none'
   }
-}, 2000)
+}, 10000)
 
 function acc() {
   const vis = document.getElementById('id2')
@@ -15,5 +15,5 @@ function acc() {
 function autoReloadAfterCart(event) {
   setTimeout(() => {
     window.location.reload()
-  }, 1000)
+  }, 100)
 }
