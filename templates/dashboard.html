@@ -1,0 +1,86 @@
+{% extends "vendor_base.html" %} {% load static %} {% block content %}
+
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+
+<div class="dashboard-container">
+  <h1 class="title">Dashboard</h1>
+  <p class="subtitle">Analytics of current details of commerce site</p>
+
+  <div class="summary-cards">
+    <div class="card">
+      <h2>Total Products</h2>
+      {% if proc %}
+      <p>{{ proc }}</p>
+      {% else %}
+      <p>0</p>
+      {% endif %}
+    </div>
+    <div class="card">
+      <h2>Total Orders</h2>
+      {% if ord %}
+      <p>{{ ord }}</p>
+      {% else %}
+      <p>0</p>
+      {% endif %}
+    </div>
+    <div class="card">
+      <h2>Pending Orders</h2>
+      {% if pending %}
+      <p>{{ pending }}</p>
+      {% else %}
+      <p>0</p>
+      {% endif %}
+    </div>
+    <div class="card">
+      <h2>Delivered Orders</h2>
+      {% if delivered %}
+      <p>{{ delivered }}</p>
+      {% else %}
+      <p>0</p>
+      {% endif %}
+    </div>
+    <div class="card">
+      <h2>Total Revenue</h2>
+      {% if revenue %}
+      <p>{{ revenue }}</p>
+      {% else %}
+      <p>0</p>
+      {% endif %}
+    </div>
+  </div>
+  <div class="actions">
+    <a href="{% url 'add_product' %}" class="btn action-btn">➕ Add Product</a>
+    <a href="{% url 'manage' %}" class="btn action-btn">📦 Manage Products</a>
+    <a href="{% url 'manage_orders' %}" class="btn action-btn">🧾 Manage Orders</a>
+  </div>
+</div>
+
+{{ days|json_script:"daily-data" }} {{ revenues|json_script:"revenues-data" }}
+
+<canvas id="revenueChart"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const months = JSON.parse(document.getElementById('daily-data').textContent)
+  const revenues = JSON.parse(document.getElementById('revenues-data').textContent)
+
+  const ctx = document.getElementById('revenueChart')
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: months,
+      datasets: [
+        {
+          label: 'Daily Revenue',
+          data: revenues,
+          borderWidth: 2,
+          fill: false
+        }
+      ]
+    }
+  })
+</script>
+
+{% endblock %}

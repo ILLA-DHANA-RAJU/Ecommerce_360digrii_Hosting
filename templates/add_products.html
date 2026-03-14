@@ -1,0 +1,136 @@
+{% extends "vendor_base.html" %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/add_product.css'%}" />
+<div class="pr_detail">
+  <div class="add_products">
+    <form method="POST" action="{% url 'add_product' %}" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div>
+        <label
+          >Product Name:
+          <input type="text" name="productname" required />
+        </label>
+      </div>
+      <div>
+        <label
+          >Product Specifications:
+          <input type="text" name="specs" />
+        </label>
+      </div>
+      <div>
+        <label
+          >Product Type:
+          <select name="type" required>
+            <option value="">Product category</option>
+
+            <!-- This is for Electronics -->
+            {% if vendor_type == 'Electronics' %}
+            <option value="mobile">Mobiles</option>
+            <option value="laptop">Laptops</option>
+            <option value="tablet">Tablets</option>
+            <option value="desktop">Desktops</option>
+            <option value="headphones">Headphones</option>
+            <option value="earphones">Earphones</option>
+            <option value="speaker">Speakers</option>
+            <option value="smartwatch">Smart Watches</option>
+            <option value="smarttvs">Smart Tv's</option>
+            <option value="powerbank">Power Banks</option>
+            <option value="camera">Cameras</option>
+            <option value="router">Wi-Fi Routers</option>
+            <option value="accessories">Electronic Accessories</option>
+
+            {% elif vendor_type == 'Garments' %}
+            <option value="men_wear">Men Wear</option>
+            <option value="women_wear">Women Wear</option>
+            <option value="kids_wear">Kids Wear</option>
+            <option value="winter_wear">Winter Wear</option>
+            <option value="ethnic_wear">Ethnic Wear</option>
+            <option value="sports_wear">Sports Wear</option>
+            <option value="formal_wear">Formal Wear</option>
+            <option value="casual_wear">Casual Wear</option>
+            <option value="inner_wear">Inner Wear</option>
+            <option value="footwear">Footwear</option>
+
+            {% elif vendor_type == 'Groceries' %}
+            <option value="fruits">Fruits</option>
+            <option value="vegetables">Vegetables</option>
+            <option value="oil">Cooking Oil</option>
+            <option value="rice">Rice</option>
+            <option value="snacks">Snacks</option>
+            <option value="spices">Spices</option>
+            <option value="dairy">Dairy Products</option>
+            <option value="beverages">Beverages</option>
+            <option value="dry_fruits">Dry Fruits</option>
+            <option value="bakery">Bakery Items</option>
+
+            {% elif vendor_type == 'Appliances' %}
+            <option value="ac">Air Conditioner</option>
+            <option value="tv">Television</option>
+            <option value="fridge">Refrigerator</option>
+            <option value="washing_machine">Washing Machine</option>
+            <option value="fan">Fan</option>
+            <option value="microwave">Microwave Oven</option>
+            <option value="mixer">Mixer Grinder</option>
+            <option value="iron_box">Iron Box</option>
+            <option value="water_purifier">Water Purifier</option>
+            <option value="vacuum_cleaner">Vacuum Cleaner</option>
+            {% endif %}
+          </select>
+        </label>
+      </div>
+      <div>
+        <label
+          >Product Price:
+          <input type="number" name="price" required />
+        </label>
+      </div>
+      <div>
+        <label
+          >Product stock:
+          <input type="text" name="stock" required />
+        </label>
+      </div>
+      <div>
+        <label
+          >Product description:
+          <textarea type="text" name="desc" required cols="8" rows="5"></textarea>
+        </label>
+      </div>
+      <div>
+        <label
+          >Product Image:
+          <input type="file" name="images" multiple required />
+        </label>
+      </div>
+      <div>
+        <label
+          >Product Video:
+          <input type="file" name="video" accept="video/*" />
+        </label>
+      </div>
+      <!-- <div>
+        <label
+          >Product Name:
+          <input type="text" name="productname" required />
+        </label>
+      </div>
+      <div>
+        <label
+          >Product Name:
+          <input type="text" name="productname" required />
+        </label> 
+      </div> -->
+      <div class="bt-aa">
+        <div class="btns">
+          <input type="submit" value="Submit" class="submit" />
+          <input type="reset" value="Clear" class="clear" />
+        </div>
+        <div class="bt">
+          <a href="{% url 'manage' %}">Go To Back</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="{% static 'js/vendor.js'%}"></script>
+{% endblock %}

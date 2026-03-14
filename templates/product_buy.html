@@ -1,0 +1,57 @@
+{% extends "customer_base.html" %} {% load static %} {% block content %}
+
+<link rel="stylesheet" href="{% static 'css/buy.css'%}" />
+
+<div class="buy-page">
+  <div class="product-buy">
+    <!-- <div class="pro-dt">
+      {% if product %}
+      <div class="pro">
+        <div class="imgs">
+          <img src="/media/{{ product.product_image }}" width="100px" height="100px" alt="image loading..." />
+        </div>
+        <div class="pro-c">
+          <p>{{ product.product_name }}</p>
+          <h4>Product Price: {{ product.product_price }}</h4>
+          <input type="hidden" name="product_id" value="{{ product.product_id }}" />
+        </div>
+      </div>
+      {% endif %}
+    </div> -->
+    <div class="pro-add">
+      {% if customer %}
+      <form method="POST" action="{% url 'deliver_add' product.product_id %}">
+        {% csrf_token %}
+        <div class="add">
+          <p>Shipping Address:</p>
+          <br />
+
+          <label>Current Address:</label>
+          <textarea class="c_add" readonly>{{ customer.address }}</textarea>
+
+          <p>New Shipping Address:</p>
+          <label>Door number: </label>
+          <input type="text" name="door" />
+          <label>Street: </label>
+          <input type="text" name="st" />
+          <label>Village/city: </label>
+          <input type="text" name="vg" />
+          <label>Mandal: </label>
+          <input type="text" name="mdl" />
+          <label>District: </label>
+          <input type="text" name="dist" />
+          <label>Zipcode: </label>
+          <input type="number" name="zipcode" />
+        </div>
+
+        <div btn-s>
+          <button type="submit">Continue</button>
+          <a href="{% url 'product' %}">Cancel</a>
+        </div>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

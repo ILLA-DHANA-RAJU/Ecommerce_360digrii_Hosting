@@ -1,0 +1,117 @@
+/* MAIN CONTAINER */
+.userprofile {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/* UPDATE BOX */
+.update {
+  width: 70%;
+  background: #fff;
+  padding: 30px;
+  border: 2px solid #000;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* USER DETAILS CONTAINER */
+.user_details {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* EVERY FIELD */
+.field {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.field label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.field img {
+  margin: 10px;
+  border-radius: 10px;
+}
+
+img {
+  display: grid;
+}
+
+.field input {
+  padding: 12px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  font-size: 16px;
+  background: #f8f8f8;
+  transition: 0.3s;
+  margin-bottom: 10px;
+}
+
+/* When active */
+.field input:focus {
+  background: #fff;
+  border-color: #222;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
+}
+
+.field select {
+  padding: 12px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  font-size: 16px;
+  background: #f8f8f8;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+.field select:focus {
+  background: #fff;
+  border-color: #222;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* EDIT BUTTON */
+.field p {
+  position: absolute;
+  right: 0;
+  top: 35px;
+  cursor: pointer;
+  margin-right: 20px;
+  color: #0077ff;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.field p:hover {
+  color: #000;
+}
+
+/* SUBMIT BUTTON */
+.btn-section {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-section button {
+  padding: 12px 25px;
+  font-size: 18px;
+  font-weight: bold;
+  background: #000;
+  color: #fff;
+  border-radius: 8px;
+  border: 2px solid #000;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-section button:hover {
+  background: #444;
+}

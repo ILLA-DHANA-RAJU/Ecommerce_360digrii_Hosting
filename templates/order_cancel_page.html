@@ -1,0 +1,19 @@
+{% extends "customer_base.html" %} {% load static %} {% block content %}
+
+<link rel="stylesheet" href="{% static 'css/cancel.css'%}" />
+
+<div class="cancel-reason">
+  <form method="POST" action="{% url 'cancel' order.order_id %}">
+    {% csrf_token %}
+    <div class="reason">
+      <label>Reason: </label>
+      <textarea name="reason" cols="4" rows="5"></textarea>
+    </div>
+    <div class="btns">
+      <button>Submit</button>
+      <a href="{% url 'order_details' order.order_id %}">Go Back</a>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

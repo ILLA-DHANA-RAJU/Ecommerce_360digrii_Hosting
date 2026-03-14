@@ -1,0 +1,59 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+<link rel="stylesheet" href="{% static 'css/about.css' %}" />
+
+<div class="about-container">
+  <div class="about-hero">
+    <h1>About Our Store</h1>
+    <p>Your trusted destination for quality products and seamless shopping</p>
+  </div>
+
+  <div class="about-section">
+    <div class="about-text">
+      <h2>Who We Are</h2>
+      <p>
+        We are a modern eCommerce platform committed to delivering high-quality products with a smooth and secure online
+        shopping experience. Our goal is to connect customers with reliable products at the best prices.
+      </p>
+    </div>
+
+    <div class="about-image">
+      <img src="{% static 'images/ecom about1.jpeg' %}" alt="Online Shopping" />
+    </div>
+  </div>
+
+  <div class="about-section reverse">
+    <div class="about-image">
+      <img src="{% static 'images/ecom about2.webp' %}" alt="Fast Delivery" />
+    </div>
+
+    <div class="about-text">
+      <h2>What We Offer</h2>
+      <ul>
+        <li>Wide range of quality products</li>
+        <li>Secure online & cash on delivery payments</li>
+        <li>Easy invoice downloads</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="about-section">
+    <div class="about-text">
+      <h2>Our Mission</h2>
+      <p>
+        Our mission is to simplify online shopping by providing a user-friendly platform, transparent pricing, and
+        excellent customer support. Customer satisfaction is our top priority.
+      </p>
+    </div>
+
+    <div class="about-image">
+      <img src="{% static 'images/ecom about3.jpeg' %}" alt="Our Mission" />
+    </div>
+  </div>
+
+  <div class="about-footer">
+    <h3>Thank You for Choosing Us ❤️</h3>
+  </div>
+</div>
+
+{% endblock %}

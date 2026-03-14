@@ -1,0 +1,54 @@
+{% extends "customer_base.html" %} {% load static %} {% block content %}
+
+<link rel="stylesheet" href="{% static 'css/cartpage.css'%}" />
+
+<div class="header-cart">
+  <!-- <p>Welcome to cart page {{ request.session.customer_firstname }}</p> -->
+</div>
+<div class="cart-page">
+  <div class="cart-details">
+    {% if items %}
+    <div class="tp-align">
+      <div class="tp">
+        <p>Total Products in Cart: {{ request.session.cart|length }}</p>
+        <p>Total Amount: {{ total }}</p>
+      </div>
+    </div>
+    {% endif %} {% if items %}
+    <div class="group-card" id="cs">
+      {% for item in items %}
+      <div class="card">
+        <div class="image-tag">
+          <img src="{{ item.product.product_image.url }}" alt="image loading..." />
+        </div>
+        <div class="card-data">
+          <div class="pq">
+            <a href="{% url 'decrement_pro' item.product.product_id %}">-</a>
+            <p>{{ item.quantity }}</p>
+            <a href="{% url 'increment_pro' item.product.product_id %}">+</a>
+          </div>
+          <p>{{ item.product.product_name }}</p>
+          <p>Price: {{ item.product.product_price }}</p>
+          <p>Status: {{ item.product.product_status }}</p>
+          <p>Category: {{ item.product.product_type }}</p>
+        </div>
+        <div class="bts">
+          <a href="{% url 'remove_cart' item.product.product_id %}" class="btn-rm" onclick="autoReloadAfterCart(event)"
+            >Remove Cart</a
+          >
+          <a href="{% url 'deliver_add' item.product.product_id %}" class="btn-buy">Buy</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="no-pro">
+      <p>No Items in your cart</p>
+      <a href="{% url 'product' %}">Shop Now</a>
+    </div>
+    {% endif %}
+  </div>
+</div>
+<script src="{% static 'js/product.js' %}"></script>
+
+{% endblock %}

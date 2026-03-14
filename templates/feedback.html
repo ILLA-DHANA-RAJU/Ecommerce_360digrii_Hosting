@@ -1,0 +1,25 @@
+{% extends 'customer_base.html' %} {% load static %} {% block content %}
+
+<link rel="stylesheet" href="{% static 'css/feedback.css' %}" />
+<div class="feed-back">
+  <div class="form">
+    {% if res %}
+    <form method="POST" action="{% url 'feedback' res.order_id %}" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="hidden" name="ord_id" value="{{ res.order_id  }}" />
+      <input type="hidden" name="pro_id" value="{{ res.order.product.product_id  }}" />
+      <div class="form-data">
+        <label>Feedback Message: </label><textarea name="feedmsg" cols="3" rows="5" required>Enter Text Here</textarea>
+      </div>
+      <div class="form-data"><label>Feedback Image: </label><input type="file" name="image" /></div>
+      <div class="form-data"><label>Feedback Video: </label><input type="file" name="video" /></div>
+      <div class="btn">
+        <input type="submit" value="Submit" />
+        <input type="reset" value="Clear" />
+      </div>
+    </form>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

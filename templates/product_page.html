@@ -1,0 +1,118 @@
+{% extends "customer_base.html" %} {% load static %} {% block content %}
+
+<link rel="stylesheet" href="{% static 'css/product_page.css'%}" />
+
+<div class="product">
+  {% if product %}
+  <div>
+    <div class="pro-img">
+      <div class="zoom-wrapper">
+        <img id="productImage" src="/media/{{ product.product_image }}" alt="image loading..." />
+        <div class="zoom-controls">
+          <button type="button" onclick="zoomIn()">+</button>
+          <button type="button" onclick="zoomOut()">−</button>
+          <button type="button" onclick="resetZoom()">⟳</button>
+        </div>
+      </div>
+      {% if product.product_stock != 0 %}
+      <p style="font-size: 1.2rem; color: rgb(15, 106, 38); border-radius: 2px; width: 100%">Avalible</p>
+      {% else %}
+      <p style="font-size: 1.2rem; color: #ea0b0b; border-radius: 2px; width: 100%">Out of Stock</p>
+      {% endif %}
+    </div>
+    <div class="pro-details">
+      <p>{{ product.product_name }} - {{ product.product_specs }}</p>
+      <p><strong>Price:</strong> {{ product.product_price}}</p>
+      <p><strong>Category:</strong> {{ product.product_type }}</p>
+      <p>
+        <strong>Product Description </strong>
+        <br />{{ product.product_description }}
+      </p>
+      <div class="p-a">
+        <a href="{% url 'add_cart' product.product_id %}" onclick="autoReloadAfterCart(event)">Add to cart</a>
+        <a href="{% url 'deliver_add' product.product_id %}">Buy</a>
+      </div>
+      {% if res %}
+      <hr width="100%" height="5px" style="background: rgb(25, 247, 255); margin-top: 40px" />
+      <div class="feed">
+        <h3 style="margin-bottom: 20px">Reviews</h3>
+        {% for imgs in res %}
+        <div class="fe-imgs">
+          <img src="/media/{{ imgs.feedback_image }}" alt="image loaing.." />
+        </div>
+        {% endfor %}
+        <div class="fe-msgs">
+          {% for msgs in res %}
+          <div class="fe-msg">
+            <p>{{ msgs.feedback_message }}</p>
+            <div class="fe-imgs">
+              <img src="/media/{{ msgs.feedback_image }}" alt="image loaing.." />
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <button class="show-more">Show More</button>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+<div class="products-container">
+  {% if fetch %}
+  <div class="card-group">
+    {% for data in fetch %}
+    <div class="product-card">
+      <a href="{% url 'product_details' data.product_id data.product_type %}">
+        <div class="images">
+          <img src="/media/{{data.product_image}}" alt="Image loading..." />
+        </div>
+        <div class="product-content">
+          <p class="clamp">{{ data.product_name }} <strong>-</strong> {{ data.product_specs }}</p>
+          <p>Price: ₹{{ data.product_price}}</p>
+          {% if data.product_stock != 0 %}
+          <p>Status: <span style="color: green">Avalible</span></p>
+          {% else %}
+          <p>Status: <span style="color: rgba(255, 34, 1, 0.642)">Unavalible</span></p>
+          {% endif %}
+          <p>Category: {{data.product_type}}</p>
+        </div>
+        <div class="product-buttons">
+          <button class="add-cart">
+            <a href="{% url 'add_cart' data.product_id %}" onclick="autoReloadAfterCart(event)">Add to Cart</a>
+          </button>
+          <button class="buy-now"><a href="{% url 'deliver_add' data.product_id %}">Buy</a></button>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  <div id="liveResearch"></div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="{% static 'js/product.js' %}"></script>
+<script>
+  $(document).ready(function () {
+    $('#livesearch').keyup(function () {
+      let qu = $(this).val().trim()
+      if (qu.length === 0) {
+        $('#liveResearch').html('')
+        $('.card-group').show()
+        return
+      }
+      $.ajax({
+        url: "{% url 'api_fetch' %}",
+        data: { q: qu, template: '{{ template_name }}' },
+        success: function (response) {
+          $('.card-group').hide(), $('#liveResearch').html(response.html)
+        }
+      })
+    })
+  })
+</script>
+
+{% endblock %}

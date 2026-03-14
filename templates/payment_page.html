@@ -1,0 +1,115 @@
+{% extends "customer_base.html" %} {% load static %} {% block content %}
+
+<link rel="stylesheet" href="{% static 'css/payment_page.css'%}" />
+
+<div class="buy-page">
+  {% if messages %} {% for msg in messages %}
+  <div class="msg" id="id1">
+    <p>{{ msg }}</p>
+  </div>
+  {% endfor %} {% endif %}
+  <div class="product-buy">
+    <div class="pro-dt">
+      <form method="POST" action="{% url  'payment_page' %}">
+        {% csrf_token %}
+        <div class="pro">
+          <div class="imgs">
+            <img src="/media/{{ product.product_image }}" width="100px" height="100px" alt="image loading..." />
+          </div>
+          <div class="pro-c">
+            <p>{{ product.product_name }}</p>
+            <p>
+              Product Price: ₹
+              <span id="total" data-price="{{ product.product_price }}">{{ product.product_price }}</span>
+            </p>
+          </div>
+          <div class="op">
+            <button type="button" onclick="decr()">-</button>
+            <input type="number" id="qty" name="quantity" value="1" min="1" readonly />
+            <button type="button" onclick="incr()">+</button>
+          </div>
+          <input type="hidden" name="product_id" value="{{ product.product_id }}" />
+        </div>
+        <div class="rd-1">
+          <input type="radio" name="payment_type" value="CASH ON DELIVERY" id="cod" required /> Cash On Delivery
+        </div>
+        <div class="rd-2"><input type="radio" name="payment_type" value="online" id="online" /> Online Payment</div>
+        <button type="submit" class="con-btn" id="confirm-btn" style="display: none">Confirm Order</button>
+        <button type="button" class="pay-btn" id="pay-btn" style="display: none">Pay Now</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'js/order.js' %}"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+{% if auto_open %}
+<script>
+  window.onload = function () {
+    var raz = new Razorpay({
+      key: '{{ razorpay_key }}',
+      amount: '{{ amount }}',
+      currency: 'INR',
+      order_id: '{{ order.razorpay_order_id }}',
+      handler: function (response) {
+        window.location.href =
+          '/payment/success/?payment_id=' +
+          response.razorpay_payment_id +
+          '&order_id=' +
+          response.razorpay_order_id +
+          '&signature=' +
+          response.razorpay_signature
+      }
+    })
+    raz.open()
+  }
+</script>
+{% endif %}
+
+<input type="hidden" id="csrf" value="{{ csrf_token }}" />
+
+<script>
+  document.getElementById('pay-btn').onclick = function () {
+    const qty = document.getElementById('qty').value
+    const productId = '{{ product.product_id }}'
+    const csrfToken = document.getElementById('csrf').value
+    const paymentType = 'online'
+
+    fetch("{% url 'payment_page' %}", {
+      method: 'POST',
+      headers: {
+        'X-CSRFToken': csrfToken,
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: `product_id=${productId}&quantity=${qty}&payment_type=${paymentType}`
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (!data.razorpay_order_id) {
+          alert('Payment init failed')
+          return
+        }
+        var options = {
+          key: data.razorpay_key,
+          amount: data.amount,
+          currency: 'INR',
+          name: 'Ecommerce web-site',
+          order_id: data.razorpay_order_id,
+
+          handler: function (response) {
+            window.location.href =
+              '/payment/success/?payment_id=' +
+              response.razorpay_payment_id +
+              '&order_id=' +
+              response.razorpay_order_id +
+              '&signature=' +
+              response.razorpay_signature
+          }
+        }
+        var rzp = new Razorpay(options)
+        rzp.open()
+      })
+  }
+</script>
+{% endblock %}

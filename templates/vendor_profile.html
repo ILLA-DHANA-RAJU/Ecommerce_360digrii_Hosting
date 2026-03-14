@@ -1,0 +1,56 @@
+{% extends "vendor_base.html" %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+
+<div class="profile-container">
+  {% if details %}
+  <div class="profile-box">
+    <div>
+      {% if messages %}
+      <div>
+        {%for msg in messages %}
+        <center>
+          <p
+            style="
+              padding: 5px;
+              background-color: white;
+              color: green;
+              width: 400px;
+              border-radius: 5px;
+              box-shadow: 0 1px 13px 2px rgb(38, 40, 39);
+              margin-bottom: 40px;
+            "
+            id="id1"
+          >
+            {{ msg }}
+          </p>
+        </center>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    <div class="profile-card">
+      <div class="user-img">
+        <img src="/media/{{ details.image }}" alt="loading..." />
+      </div>
+      <div class="user-content">
+        <p><strong>Name:</strong> {{ details.firstname }} {{ details.lastname }}</p>
+        <p><strong>Email:</strong> {{ details.email }}</p>
+        <p><strong>Mobile Number:</strong> {{ details.mobileno }}</p>
+        <p><strong>Category:</strong> {{ details.vendor_type }}</p>
+      </div>
+    </div>
+    <div class="btn-details">
+      <a href="{% url 'vendor_update' details.vendor_id %}" class="update-btn">Update</a>
+      <a href="{% url 'vendor_delete' details.vendor_id %}" class="delete-btn" onclick="return del()">Delete Account</a>
+      <a href="{% url 'vendor_logout' %}" class="logout-btn">Logout</a>
+    </div>
+    {% else %}
+    <div class="not-found">
+      <p>User details not found</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<script src="{% static 'js/profile.js' %}"></script>
+{% endblock %}

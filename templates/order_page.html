@@ -1,0 +1,70 @@
+{% extends "customer_base.html" %} {% load static %} {% block content %}
+
+<link rel="stylesheet" href="{% static 'css/order_page.css' %}" />
+
+{% if messages %} {% for msg in messages %}
+<div class="msg" id="id1">
+  <p>{{ msg }}</p>
+</div>
+{% endfor %} {% endif %}
+<div></div>
+{% if ord %}
+<div class="order-details">
+  <div class="ord-img">
+    <img src="/media/{{ ord.product.product_image }}" alt="image loading..." width="300px" height="300px" />
+  </div>
+  <div class="ord-details">
+    <p><strong></strong>{{ ord.product.product_name }}</p>
+    <p><strong>Quantity: </strong>{{ ord.quantity }}</p>
+    <p><strong>Amount: </strong>{{ ord.order_amount }}</p>
+    <p><strong>Status:</strong> {{ ord.order_status }}</p>
+    <p><strong>Payment Type: </strong> {{ ord.payment_type }}</p>
+    <div class="ord-opt">
+      {% if ord.payment_type == "online" and ord.payment_status == "PENDING" %}
+      <div class="pay-p">
+        <p>Please Complete payment</p>
+        <a href="{% url 'resume_payment' ord.order_id %}">Pay Now</a>
+      </div>
+      {% endif %}
+      <div></div>
+      {% if ord.payment_status != 'PAID' and ord.payment_type != "online" and ord.order_status != "SHIPPED" %}
+      <div class="ord-can">
+        <p>Do You Want Cancel?</p>
+        <a href="{% url 'cancel_page' ord.order_id %}">Cancel Order</a>
+      </div>
+      {% endif %}
+      <div></div>
+      {% if ord.payment_type == 'online' and ord.order_status == "CREATED" %}
+      <div class="ord-can">
+        <p>Do You Want Cancel?</p>
+        <a href="{% url 'cancel_page' ord.order_id %}">Cancel Order</a>
+      </div>
+      {% endif %}
+      <div></div>
+      {% if ord.payment_status == "PAID" and ord.order_status == "DELIVERED" %}
+      <div class="feed">
+        <p>FeedBack Form</p>
+        <a href="{% url 'feedback' ord.order_id %}">feedback</a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  <div class="ord-add">
+    <p><strong>Shipping Address</strong><br />{{ ord.shipping_address }}</p>
+    {% if not ord.order_status == 'CANCELLED' and not ord.payment_status == "PENDING" %}
+    <div class="invioce">
+      <p><strong>Invioce Page1</strong></p>
+      <a href="{% url 'invoice_page' ord.order_id %}" target="_blank">View Details</a>
+    </div>
+    <div class="dow-in">
+      <p><strong>Download Invioce</strong></p>
+      <a href="{% url 'download' ord.order_id %}">Download PDF</a>
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+</div>
+
+<script src="{% static 'js/profile.js' %}"></script>
+
+{% endblock %}

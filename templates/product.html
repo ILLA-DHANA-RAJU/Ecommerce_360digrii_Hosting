@@ -1,0 +1,67 @@
+{% extends "customer_base.html" %} {% load static %} {% block content %}
+
+<link rel="stylesheet" href="{% static 'css/home.css'%}" />
+
+{% if messages %} {% for msg in messages %}
+<div class="msg" id="id1">
+  <p>{{ msg }}</p>
+</div>
+{% endfor %} {% endif %}
+
+<div class="products-container">
+  {% if fetch %}
+  <div class="card-group">
+    {% for data in fetch %}
+    <div class="product-card">
+      <a href="{% url 'product_details' data.product_id data.product_type %}">
+        <div class="images">
+          <img src="/media/{{data.product_image}}" alt="Image loading..." />
+        </div>
+        <div class="product-content">
+          <p class="clamp">{{ data.product_name }} <strong>-</strong> {{ data.product_specs }}</p>
+          <p>Price: ₹{{ data.product_price}}</p>
+          {% if data.product_stock != 0 %}
+          <p>Status: <span style="color: green">Avalible</span></p>
+          {% else %}
+          <p>Status: <span style="color: rgba(255, 34, 1, 0.642)">Unavalible</span></p>
+          {% endif %}
+          <p>Category: {{data.product_type}}</p>
+        </div>
+        <div class="product-buttons">
+          <button class="add-cart">
+            <a href="{% url 'add_cart' data.product_id %}" onclick="autoReloadAfterCart(event)">Add to Cart</a>
+          </button>
+          <button class="buy-now"><a href="{% url 'deliver_add' data.product_id %}">Buy</a></button>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  <div id="liveResearch"></div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="{% static 'js/product.js' %}"></script>
+<script src="{% static 'js/profile.js' %}"></script>
+<script>
+  $(document).ready(function () {
+    $('#livesearch').keyup(function () {
+      let qu = $(this).val().trim()
+      if (qu.length === 0) {
+        $('#liveResearch').html('')
+        $('.card-group').show()
+        return
+      }
+      $.ajax({
+        url: '{% url "api_fetch" %}',
+        data: { q: qu, template: '{{ template_name }}' },
+        success: function (response) {
+          $('.card-group').hide(), $('#liveResearch').html(response.html)
+        }
+      })
+    })
+  })
+</script>
+{% endblock %}

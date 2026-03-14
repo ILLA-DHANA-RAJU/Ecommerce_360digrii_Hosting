@@ -1,0 +1,72 @@
+{% extends 'customer_base.html' %} {% load static %} {% block content %}
+
+<link rel="stylesheet" href="{% static 'css/update_profile.css' %}" />
+
+<div class="userprofile">
+  <div class="update">
+    {% if user %}
+    <div class="user_details">
+      <form method="POST" action="{% url 'update' user.user_id %}" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="field">
+          <label>Firstname</label>
+          <input type="text" name="firstname" value="{{ user.firstname }}" disabled />
+          <p onclick="activate(this)">Edit</p>
+        </div>
+
+        <div class="field">
+          <label>Lastname</label>
+          <input type="text" name="lastname" value="{{ user.lastname }}" disabled />
+          <p onclick="activate(this)">Edit</p>
+        </div>
+
+        <div class="field">
+          <label>Email</label>
+          <input type="email" name="email" value="{{ user.email }}" disabled />
+          <p onclick="activate(this)">Edit</p>
+        </div>
+
+        <div class="field">
+          <label>Mobile No</label>
+          <input type="number" name="mobile" value="{{ user.mobileno }}" disabled />
+          <p onclick="activate(this)">Edit</p>
+        </div>
+
+        <div class="field">
+          <label>Alternate Mobile No</label>
+          <input type="number" name="altmobile" value="{{ user.alternate_mobileno }}" disabled />
+          <p onclick="activate(this)">Edit</p>
+        </div>
+
+        <div class="field">
+          <label>Address</label>
+          <input type="text" name="address" value="{{ user.address }}" disabled />
+          <p onclick="activate(this)">Edit</p>
+        </div>
+
+        <div class="field">
+          <label>Zipcode</label>
+          <input type="number" name="zipcode" value="{{ user.zipcode }}" disabled />
+          <p onclick="activate(this)">Edit</p>
+        </div>
+
+        <div class="field">
+          <label>Profile Image</label>
+          <img src="/media/{{ user.image }}" alt="image loading..." width="200px" height="200px" />
+          <input type="file" name="img" disabled />
+          <p onclick="activate(this)">Edit</p>
+        </div>
+
+        <div class="btn-section">
+          <button type="submit" onclick="allactivate()">Update Profile</button>
+        </div>
+      </form>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<script src="{% static 'js/customer.js'%}"></script>
+
+{% endblock %}

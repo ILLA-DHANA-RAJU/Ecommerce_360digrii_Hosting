@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ecommerce Website</title>
+    <link rel="stylesheet" href="{% static 'css/invioce.css' %}" />
+    <link rel="icon" type="image/png" href="{% static 'images/image.png' %}" />
+  </head>
+  <body>
+    <div class="in">
+      <div class="invioce">
+        <h1>Invioce</h1>
+        <div class="header">
+          <div>
+            <h2>Ecommerce Website</h2>
+            <!-- <p>GSTIN: XXXXXXXX</p> -->
+          </div>
+          <div>
+            <p><strong>Order Id:</strong> {{ order.order_id }}</p>
+            <p><strong>Date:</strong> {{ order.create_at }}</p>
+          </div>
+        </div>
+
+        <h3>Bill To:</h3>
+        <p>{{ order.user.firstname }} {{ order.user.lastname }}</p>
+        <p><strong>Shipping Addrees:</strong> {{ order.shipping_address }}</p>
+
+        <table>
+          <tr>
+            <th>Product</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Total</th>
+          </tr>
+          <tr>
+            <td>{{ order.product.product_name }}</td>
+            <td>{{ order.quantity }}</td>
+            <td>₹{{ order.product.product_price }}</td>
+            <td>₹{{ order.order_amount }}</td>
+          </tr>
+        </table>
+
+        <h3>Payment Details:</h3>
+        <p>Payment Type: {{ order.payment_type }}</p>
+        <p>Payment Status: {{ order.payment_status }}</p>
+        <p>Payment ID: {{ order.razorpay_payment_id }}</p>
+
+        <h2>Total Amount: ₹{{ order.order_amount }}</h2>
+
+        <p>Thank you for shopping with us ❤️</p>
+      </div>
+    </div>
+  </body>
+</html>

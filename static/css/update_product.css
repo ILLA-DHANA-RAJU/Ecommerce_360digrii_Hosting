@@ -1,0 +1,182 @@
+/* MAIN CONTAINER */
+.update_products {
+  width: 65%;
+  margin: 40px auto;
+  padding: 35px;
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* EACH INPUT BLOCK */
+.input-box {
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.input-box label {
+  display: block;
+  font-size: 17px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #222;
+}
+
+/* INPUT, SELECT, TEXTAREA */
+.input-box input,
+.input-box select,
+.input-box textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  background: #f4f4f4;
+  font-size: 15px;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+/* DISABLED FIELDS STYLING */
+.input-box input:disabled,
+.input-box select:disabled,
+.input-box textarea:disabled {
+  background: #e0e0e0;
+  cursor: not-allowed;
+  color: #777;
+  border-color: #ccc;
+}
+
+/* ACTIVE EDITABLE FIELD */
+.input-box input:not(:disabled),
+.input-box select:not(:disabled),
+.input-box textarea:not(:disabled) {
+  background: #ffffff;
+  border-color: #000;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+}
+
+/* ===== EDIT BUTTON (RIGHT SIDE SMALL BUTTON) ===== */
+.input-box p {
+  position: absolute;
+  right: 5px;
+  top: 35px;
+  margin: 0;
+  padding: 4px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #0077ff;
+  border: 1px solid #0077ff;
+  border-radius: 4px;
+  background: #eaf3ff;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.input-box p:hover {
+  background: #d6e9ff;
+}
+
+/* IMAGE & VIDEO PREVIEW */
+.input-box img,
+.input-box video {
+  display: block;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 2px solid #000;
+  max-width: 200px;
+}
+
+/* FILE INPUT FIELDS */
+.input-box input[type='file'] {
+  width: 40%;
+  margin-top: 10px;
+  background: #fff;
+  padding: 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid #000;
+  transition: 0.2s ease;
+}
+
+.input-box input[type='file']:hover {
+  background: #f2f2f2;
+}
+
+/* BUTTON SECTION */
+.btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 35px;
+}
+
+/* SUBMIT BUTTON */
+.btns button {
+  padding: 12px;
+  font-size: 17px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #000;
+  color: #fff;
+  border: 2px solid #000;
+  transition: 0.3s ease;
+}
+
+.btns button:hover {
+  background: #333;
+}
+
+/* BACK LINK BUTTON */
+.btns a {
+  padding: 12px;
+  text-align: center;
+  font-size: 17px;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  border: 2px solid #000;
+  background: #efefef;
+  color: #000;
+  transition: 0.3s ease;
+}
+
+.btns a:hover {
+  background: #dcdcdc;
+}
+
+/* PAGE LOAD ANIMATION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 700px) {
+  .update_products {
+    width: 92%;
+    padding: 25px;
+  }
+
+  .input-box label {
+    font-size: 16px;
+  }
+
+  .input-box p {
+    right: 3px;
+    top: 38px;
+    font-size: 13px;
+    padding: 3px 6px;
+  }
+
+  .btns {
+    flex-direction: column;
+  }
+}

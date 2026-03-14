@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}" />
+
+<div class="signup-container">
+  <div class="signup-box">
+    <h1>Signup</h1>
+
+    <form method="POST" action="{% url 'signup'%}" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <input type="text" name="firstname" placeholder="First Name" required />
+      <input type="text" name="lastname" placeholder="Last Name" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="number" name="mobile" placeholder="Mobile Number" required />
+      <input type="number" name="altmobile" placeholder="Alternate Number" />
+      <input type="password" name="password" placeholder="Password" required />
+      <input type="text" name="address" placeholder="Ex. Door no, street, local address" required />
+      <input type="number" name="zipcode" placeholder="Zipcode" required />
+      <input type="file" name="image" />
+
+      <input type="submit" value="Submit" onclick="autoReloadAfterCart(event)" />
+      <input type="reset" value="Clear" />
+
+      <div class="singin">
+        <p>
+          Already have an account?
+          <a href="{% url 'login' %}">Login</a>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="{% static 'js/login.js' %}"></script>
+
+{% endblock %}

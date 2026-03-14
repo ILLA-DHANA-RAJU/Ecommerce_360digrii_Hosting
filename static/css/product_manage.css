@@ -1,0 +1,328 @@
+/* MAIN CONTAINER */
+.product {
+  flex: 1;
+  margin: 30px auto;
+}
+
+/* ADD PRODUCT BUTTON */
+.add-product-box {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.add-btn {
+  background: #000;
+  padding: 12px 22px;
+  color: #fff;
+  border: 2px solid #000;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 16px;
+  transition: 0.3s ease;
+}
+
+.add-btn:hover {
+  background: #444;
+}
+
+/* TABLE WRAPPER */
+.table_data {
+  width: 100%;
+}
+
+/* TABLE DESIGN */
+.table_data table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border: 2px solid #000;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* TABLE HEADER */
+.table-head th {
+  background: #000 !important;
+  color: #fff !important;
+  padding: 14px 10px;
+  text-align: center;
+  font-size: 16px;
+  border-right: 1px solid #333;
+  text-transform: capitalize;
+}
+
+/* TABLE ROWS */
+.class-data td {
+  padding: 12px 10px;
+  font-size: 15px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+
+/* IMAGE COLUMN */
+.img-box img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 2px solid #000;
+}
+
+/* VIDEO COLUMN */
+.table_data table td video {
+  width: 180px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #000;
+  background: #f5f5f5;
+  display: block;
+  margin: 5px auto;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.table_data table td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+table.dataTable > thead > tr > th,
+table.dataTable > thead > tr > td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+/* UPDATE & DELETE BUTTONS */
+.update,
+.delete {
+  padding: 8px 12px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 6px;
+  border: 2px solid #000;
+  display: inline-block;
+  transition: 0.3s ease;
+}
+
+/* UPDATE BUTTON */
+.update {
+  background: #fff;
+  color: #000;
+}
+
+.update:hover {
+  background: #27ae60;
+  color: #fff;
+}
+
+/* DELETE BUTTON */
+.delete {
+  background: #fff;
+  color: #000;
+}
+
+.delete:hover {
+  background: #e74c3c;
+  color: #fff;
+}
+
+/* ROW HOVER EFFECT */
+table.dataTable tbody tr:hover {
+  background: #f7f7f7 !important;
+  transition: 0.3s ease;
+}
+
+/* ------------------------------- */
+/* DATATABLE CUSTOMIZATION         */
+/* ------------------------------- */
+
+/* LENGTH DROPDOWN */
+.dataTable {
+  width: 100%;
+}
+.dataTables_length {
+  padding: 15px;
+}
+
+.dataTables_length label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #000;
+}
+
+.dataTables_length select {
+  border: 2px solid #000;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: #fff;
+  font-weight: bold;
+}
+
+/* SEARCH BOX */
+.dataTables_filter {
+  text-align: right;
+  padding: 15px;
+}
+
+.dataTables_filter label {
+  font-size: 17px;
+  font-weight: bold;
+  color: #000;
+}
+
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter {
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.dataTables_wrapper .dataTables_length {
+  float: left !important;
+}
+
+.dataTables_wrapper .dataTables_filter {
+  float: right !important;
+}
+
+.dataTables_wrapper::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.dataTables_filter input {
+  border: 2px solid #000;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-left: 5px;
+  font-size: 14px;
+  width: 260px;
+  transition: 0.3s ease;
+}
+
+/* PAGINATION BUTTONS */
+.dataTables_paginate {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.dataTables_paginate .paginate_button {
+  border: 2px solid #000 !important;
+  background: #fff !important;
+  padding: 6px 12px !important;
+  margin: 0 4px !important;
+  border-radius: 6px !important;
+  color: #000 !important;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.dataTables_paginate .paginate_button:hover {
+  background: #e0e0e0 !important;
+}
+
+.dataTables_paginate .paginate_button.current {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+/* INFO TEXT */
+.dataTables_info {
+  padding: 15px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #444;
+}
+
+/* SELECTED ROW HIGHLIGHT */
+table.dataTable tbody tr.selected {
+  background-color: #27ae60 !important;
+  color: #fff;
+}
+
+.edit-btn,
+.save-btn {
+  padding: 8px 12px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 6px;
+  border: 2px solid #000;
+  display: inline-block;
+  transition: 0.3s ease;
+}
+
+.edit-btn:hover,
+.save-btn:hover {
+  background: #0d0e0d;
+  color: #fff;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  flex-wrap: wrap;
+}
+
+/* Filter label */
+.filters label {
+  font-size: 15px;
+  font-weight: bold;
+  color: #000;
+  margin-right: 6px;
+}
+
+/* Filter dropdown */
+.filters select {
+  padding: 8px 12px;
+  border: 2px solid #000;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+  min-width: 180px;
+  transition: 0.3s ease;
+}
+
+.filters select:hover,
+.filters select:focus {
+  background: #f0f0f0;
+  outline: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .add-btn {
+    width: 100%;
+    text-align: center;
+    display: block;
+  }
+
+  .img-box img {
+    width: 55px;
+    height: 55px;
+  }
+
+  .dataTables_filter input {
+    width: 180px;
+  }
+  .filters {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filters select {
+    width: 100%;
+  }
+}

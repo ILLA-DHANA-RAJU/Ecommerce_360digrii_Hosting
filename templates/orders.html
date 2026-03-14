@@ -1,0 +1,68 @@
+{% extends "customer_base.html" %} {% load static %} {% block content %}
+
+<link rel="stylesheet" href="{% static 'css/orders.css'%}" />
+
+<div class="orders">
+  {% if ord %}
+  <h2 class="order-title">My Orders</h2>
+
+  {% if messages %} {% for msg in messages %}
+  <div class="msg" id="id1">
+    <p>{{ msg }}</p>
+  </div>
+  {% endfor %} {% endif %}
+
+  <div class="orders-container">
+    {% for items in ord %}
+    <div class="order-row">
+      {% if items.payment_type == "online" and items.payment_status == "PENDING" %}
+      <div class="#">
+        <p>Payment Pending on this order!</p>
+      </div>
+      {% endif %}
+      <div class="img">
+        <img src="/media/{{ items.product.product_image }}" width="100px" height="100px" alt="image loading..." />
+      </div>
+      <div class="order-card">
+        <p>{{ items.product.product_name }}</p>
+      </div>
+      <div class="or-can">
+        <a href="{% url 'order_details' items.order_id  %}">View Details</a>
+      </div>
+    </div>
+    {% endfor %} {% else %}
+    <div class="no-orders">
+      <p>You have no orders yet</p>
+      <br />
+      <a href="{% url 'product' %}">Start Shopping</a>
+    </div>
+    {% endif %}
+    <div id="livesearch"></div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="{% static 'js/profile.js' %}"></script>
+
+<script>
+  $(document).ready(function () {
+    $('#livesearch').keyup(function () {
+      let qu = $(this).val().trim()
+      if (qu.length === 0) {
+        $('#liveResearch').html('')
+        $('.card-group').show()
+        return
+      }
+      $.ajax({
+        url: "{% url 'api_fetch'%}",
+        data: { q: qu, template: '{{ template_name }}' },
+        success: function (response) {
+          $('.card-group').hide(), $('#liveResearch').html(response.html)
+        }
+      })
+    })
+  })
+</script>
+
+{% endblock %}

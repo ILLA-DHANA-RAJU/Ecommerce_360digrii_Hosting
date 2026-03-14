@@ -1,0 +1,64 @@
+{% extends "vendor_base.html" %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/update_profile.css' %}" />
+
+<div class="userprofile">
+  <div class="update">
+    {% if vd %}
+    <div class="user_details">
+      <form method="POST" action="{% url 'vendor_update' vd.vendor_id %}" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="field">
+          <label>Firstname</label>
+          <input type="text" name="firstname" value="{{ vd.firstname }}" disabled />
+          <p onclick="activate(this)">Edit</p>
+        </div>
+
+        <div class="field">
+          <label>Lastname</label>
+          <input type="text" name="lastname" value="{{ vd.lastname }}" disabled />
+          <p onclick="activate(this)">Edit</p>
+        </div>
+
+        <div class="field">
+          <label>Email</label>
+          <input type="email" name="email" value="{{ vd.email }}" disabled />
+          <p onclick="activate(this)">Edit</p>
+        </div>
+
+        <div class="field">
+          <label>Mobile No</label>
+          <input type="number" name="mobile" value="{{ vd.mobileno }}" disabled />
+          <p onclick="activate(this)">Edit</p>
+        </div>
+
+        <div class="field">
+          <label>Vendor Category</label>
+          <select name="category" disabled>
+            <option value="Electronics" {% if vd.vendor_type == 'Electronics' %}selected{% endif %}>Electronics</option>
+            <option value="Garments" {% if vd.vendor_type == 'Garments' %}selected{% endif %}>Garments</option>
+            <option value="Groceries" {% if vd.vendor_type == 'Groceries' %}selected{% endif %}>Groceries</option>
+            <option value="Appliances" {% if vd.vendor_type == 'Appliances' %}selected{% endif %}>Appliances</option>
+          </select>
+          <p onclick="activate(this)">Edit</p>
+        </div>
+
+        <div class="field">
+          <label>Current Image</label>
+          <img src="/media/{{ vd.image }}" alt="image loading..." width="200px" height="200px" />
+          <input type="file" name="img" disabled />
+          <p onclick="activate(this)">Edit</p>
+        </div>
+
+        <div class="btn-section">
+          <button type="submit" onclick="allactivate()">Update Profile</button>
+          
+        </div>
+      </form>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<script src="{% static 'js/customer.js'%}"></script>
+{% endblock %}

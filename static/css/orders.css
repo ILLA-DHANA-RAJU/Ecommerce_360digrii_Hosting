@@ -1,0 +1,162 @@
+/* ================= ORDERS PAGE ================= */
+.orders {
+  width: 100%;
+  padding: 40px 20px;
+  background: #f5f6fa;
+}
+
+/* PAGE TITLE */
+.order-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 25px;
+  color: #222;
+}
+
+/* ================= MESSAGE ================= */
+.msg {
+  width: 70%;
+  margin: 0 auto 25px;
+  padding: 14px;
+  border-radius: 10px;
+  background: #e7ffe7;
+  border: 2px solid #4caf50;
+  color: #1b5e20;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* ================= ORDERS GRID ================= */
+.orders-container {
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  align-items: start;
+}
+
+/* ================= ORDER CARD ================= */
+.order-row {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: 0.3s ease;
+}
+
+.order-row:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+}
+
+/* ================= PAYMENT PENDING MESSAGE ================= */
+.order-row > div:first-child p {
+  background: #fff3cd;
+  color: #856404;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+/* ================= PRODUCT IMAGE ================= */
+.img {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.img img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #fafafa;
+}
+
+/* ================= ORDER INFO ================= */
+.order-card {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.order-card p {
+  font-size: 15px;
+  font-weight: 600;
+  color: #222;
+}
+
+/* ================= ACTION BUTTON ================= */
+.or-can {
+  width: 50%;
+  text-align: center;
+  justify-items: end;
+}
+
+.or-can a {
+  display: inline-block;
+  width: 100%;
+  padding: 10px 0;
+  background: #000;
+  color: #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.or-can a:hover {
+  background: #333;
+  transform: scale(1.05);
+}
+
+/* ================= NO ORDERS ================= */
+.no-orders {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.no-orders p {
+  font-size: 22px;
+  font-weight: bold;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.no-orders a {
+  padding: 12px 28px;
+  background: #000;
+  color: #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.no-orders a:hover {
+  background: #333;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 600px) {
+  .order-title {
+    font-size: 22px;
+  }
+
+  .img img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .or-can a {
+    font-size: 14px;
+  }
+}

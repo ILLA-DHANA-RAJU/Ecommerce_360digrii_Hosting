@@ -1,0 +1,78 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+
+<div class="home-container">
+  <div class="hero">
+    <h1>Welcome to Our Ecommerce Store</h1>
+    <p>Best Deals • Best Quality • Fast Delivery</p>
+    <button class="shop-btn"><a href="{% url 'custome_login'%}">Shop Now</a></button>
+  </div>
+</div>
+
+<div class="products-container">
+  <div class="error-message" id="error_msg">
+    {% if message %}
+    <p style="text-align: center">{{ message }} {{ search_name }}</p>
+    {% endif %}
+    <div>
+      {% if messages %} {% for msg in messages %}
+      <p style="text-align: center">{{ msg }}</p>
+      {% endfor %} {% endif %}
+    </div>
+  </div>
+  <!-- {% if fetch %} -->
+  <div class="card-group" id="product">
+    {% for data in fetch %}
+    <div class="product-card">
+      <div class="images">
+        <img src="/media/{{data.product_image}}" alt="Image loading..." />
+      </div>
+      <div class="product-content">
+        <p class="clamp">{{ data.product_name }} - {{ data.product_specs }}</p>
+        <p>Price: ₹{{ data.product_price}}</p>
+        {% if data.product_stock != 0 %}
+        <p>Status: <span style="color: green">Avalible</span></p>
+        {% else %}
+        <p>Status: <span style="color: rgba(255, 34, 1, 0.642)">Unavalible</span></p>
+        {% endif %}
+        <p>Category: {{data.product_type}}</p>
+      </div>
+      <div class="product-buttons">
+        <button class="add-cart"><a href="{% url 'add_list'%}">Add to Cart</a></button>
+        <button class="add-cart"><a href="{% url 'remove_item'%}">Remove to Cart</a></button>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <!-- {% endif %} -->
+  <div id="liveResults"></div>
+</div>
+<script src="{% static 'js/home.js'%}"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    $('#livesearch').keyup(function () {
+      let query = $(this).val().trim()
+
+      if (query.length === 0) {
+        $('#liveResults').html('')
+        $('#product').show()
+        return
+      }
+
+      $.ajax({
+        url: "{% url 'api_fetch' %}",
+        data: { q: query, template: '{{ template_name }}' },
+        success: function (response) {
+          $('#product').hide()
+          $('#liveResults').html(response.html)
+        }
+      })
+    })
+  })
+</script>
+
+{% endblock %}

@@ -1,0 +1,204 @@
+/* ================= CART PAGE MAIN CONTAINER ================= */
+.cart-page {
+  width: 100%;
+  padding: 30px 20px;
+  display: grid;
+}
+.tp-align {
+  display: flex;
+  justify-content: end;
+}
+
+.tp {
+  width: auto;
+  min-width: 25%;
+  max-width: 100%;
+  margin-bottom: 30px;
+  padding: 18px 25px;
+  background: #0c0c0c; /* soft yellow-orange background */
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(36, 36, 34, 0.25);
+}
+
+.tp p {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 10px;
+}
+
+/* ================= GROUP OF CARDS ================= */
+.group-card {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  justify-items: center;
+}
+
+/* ================= SINGLE CARD ================= */
+.card {
+  width: 100%;
+  max-width: 450px;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 2px solid #000;
+  padding: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* ================= PRODUCT IMAGE ================= */
+.image-tag {
+  width: 100%;
+  height: 160px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f8f8f8;
+  display: flex;
+  justify-content: center;
+}
+.image-tag img {
+  object-fit: cover;
+}
+/* ================= PRODUCT DATA ================= */
+.card-data {
+  margin-top: 15px;
+}
+
+.card-data p {
+  margin: 6px 0;
+  font-size: 15px;
+  color: #111;
+  font-weight: 500;
+}
+
+/* ================= QUANTITY SECTION ================= */
+.pq {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  justify-content: flex-end;
+}
+
+.pq a {
+  width: 35px;
+  height: 35px;
+  background: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  font-size: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.2s ease;
+  font-weight: bold;
+}
+
+.pq a:hover {
+  background: #444;
+}
+
+.pq p {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* ================= NO PRODUCT MESSAGE ================= */
+.no-pro {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.no-pro p {
+  font-size: 22px;
+  font-weight: bold;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.no-pro a {
+  background: #000;
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.no-pro a:hover {
+  background: #333;
+}
+
+/* ================= BUTTON SECTION ================= */
+.bts {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+/* COMMON BUTTON STYLE */
+.bts a {
+  flex: 1;
+  padding: 12px 0;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  border: 2px solid #000;
+  transition: 0.3s ease-in-out;
+}
+
+/* REMOVE BUTTON */
+.btn-rm {
+  color: #010101;
+}
+
+.btn-rm:hover {
+  background: #080808;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* BUY BUTTON */
+.btn-buy {
+  color: #000;
+  background: #fff;
+}
+
+.btn-buy:hover {
+  background: #000;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 600px) {
+  .card {
+    padding: 12px;
+  }
+
+  .image-tag {
+    height: 130px;
+  }
+
+  .pq a {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+  }
+}

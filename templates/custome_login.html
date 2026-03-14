@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<link rel="stylesheet" href="{% static 'css/custome_page.css' %}" />
+
+<div class="selection-container">
+  <h1 class="title">Choose Your Login Type</h1>
+  <p class="subtitle">Select the portal that matches your role to continue</p>
+  <div class="panel-wrapper">
+    <div class="panel vendor-panel">
+      <h2>Vendor Login</h2>
+      <p>Are you a seller? Access your vendor dashboard here.</p>
+      <a href="{% url 'vendor_login' %}" class="login-btn vendor-btn">Login as Vendor</a>
+    </div>
+
+    <div class="panel customer-panel">
+      <h2>Customer Login</h2>
+      <p>Shop online, track orders, and manage your profile.</p>
+      <a href="{% url 'login' %}" class="login-btn customer-btn">Login as Customer</a>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'js/login.js'%}"></script>
+
+{% endblock %}

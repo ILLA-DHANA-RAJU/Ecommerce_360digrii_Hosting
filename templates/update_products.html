@@ -1,0 +1,124 @@
+{% extends "vendor_base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/update_product.css' %}" />
+
+<div class="update_products">
+  <form method="POST" action="{% url 'update_products' data.product_id %}" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {% if data %}
+    <div class="input-box">
+      <label>Product Name:</label>
+      <input type="text" name="name" value="{{ data.product_name }}"  disabled />
+      <p onclick="activate(this)">Edit</p>
+    </div>
+    <div class="input-box">
+      <label>Product Specs:</label>
+      <input type="text" name="specs" value="{{ data.product_specs }}" disabled />
+      <p onclick="activate(this)">Edit</p>
+    </div>
+    <div class="input-box">
+      <label>Product Type:</label>
+      <select name="type" disabled >
+        {% if vendor_type == 'Electronics' %}
+        <option value="mobile" {% if data.product_type == "mobile" %}selected{% endif %}>Mobiles</option>
+        <option value="laptop" {% if data.product_type == "laptop" %}selected{% endif %}>Laptops</option>
+        <option value="tablet" {% if data.product_type == "tablet" %}selected{% endif %}>Tablets</option>
+        <option value="desktop" {% if data.product_type == "desktop" %}selected{% endif %}>Desktops</option>
+        <option value="headphones" {% if data.product_type == "headphones" %}selected{% endif %}>Headphones</option>
+        <option value="earphones" {% if data.product_type == "earphones" %}selected{% endif %}>Earphones</option>
+        <option value="speaker" {% if data.product_type == "speaker" %}selected{% endif %}>Speakers</option>
+        <option value="smartwatch" {% if data.product_type == "smartwatch" %}selected{% endif %}>Smart Watches</option>
+        <option value="smarttvs" {% if data.product_type == "smarttvs" %}selected{% endif %}>Smart TVs</option>
+        <option value="powerbank" {% if data.product_type == "powerbank" %}selected{% endif %}>Power Banks</option>
+        <option value="camera" {% if data.product_type == "camera" %}selected{% endif %}>Cameras</option>
+        <option value="router" {% if data.product_type == "router" %}selected{% endif %}>Wi-Fi Routers</option>
+        <option value="accessories" {% if data.product_type == "accessories" %}selected{% endif %}>Electronic Accessories</option>
+
+        {% elif vendor_type == 'Garments' %}
+        <option value="men_wear" {% if data.product_type == "men_wear" %}selected{% endif %}>Men Wear</option>
+        <option value="women_wear" {% if data.product_type == "women_wear" %}selected{% endif %}>Women Wear</option>
+        <option value="kids_wear" {% if data.product_type == "kids_wear" %}selected{% endif %}>Kids Wear</option>
+        <option value="winter_wear" {% if data.product_type == "winter_wear" %}selected{% endif %}>Winter Wear</option>
+        <option value="ethnic_wear" {% if data.product_type == "ethnic_wear" %}selected{% endif %}>Ethnic Wear</option>
+        <option value="sports_wear" {% if data.product_type == "sports_wear" %}selected{% endif %}>Sports Wear</option>
+        <option value="formal_wear" {% if data.product_type == "formal_wear" %}selected{% endif %}>Formal Wear</option>
+        <option value="casual_wear" {% if data.product_type == "casual_wear" %}selected{% endif %}>Casual Wear</option>
+        <option value="inner_wear" {% if data.product_type == "inner_wear" %}selected{% endif %}>Inner Wear</option>
+        <option value="footwear" {% if data.product_type == "footwear" %}selected{% endif %}>Footwear</option>
+
+        {% elif vendor_type == 'Groceries' %}
+        <option value="fruits" {% if data.product_type == "fruits" %}selected{% endif %}>Fruits</option>
+        <option value="vegetables" {% if data.product_type == "vegetables" %}selected{% endif %}>Vegetables</option>
+        <option value="oil" {% if data.product_type == "oil" %}selected{% endif %}>Cooking Oil</option>
+        <option value="rice" {% if data.product_type == "rice" %}selected{% endif %}>Rice</option>
+        <option value="snacks" {% if data.product_type == "snacks" %}selected{% endif %}>Snacks</option>
+        <option value="spices" {% if data.product_type == "spices" %}selected{% endif %}>Spices</option>
+        <option value="dairy" {% if data.product_type == "dairy" %}selected{% endif %}>Dairy Products</option>
+        <option value="beverages" {% if data.product_type == "beverages" %}selected{% endif %}>Beverages</option>
+        <option value="dry_fruits" {% if data.product_type == "dry_fruits" %}selected{% endif %}>Dry Fruits</option>
+        <option value="bakery" {% if data.product_type == "bakery" %}selected{% endif %}>Bakery Items</option>
+
+        {% elif vendor_type == 'Appliances' %}
+        <option value="ac" {% if data.product_type == "ac" %}selected{% endif %}>Air Conditioner</option>
+        <option value="tv" {% if data.product_type == "tv" %}selected{% endif %}>Television</option>
+        <option value="fridge" {% if data.product_type == "fridge" %}selected{% endif %}>Refrigerator</option>
+        <option value="washing_machine" {% if data.product_type == "washing_machine" %}selected{% endif %}>Washing Machine</option>
+        <option value="fan" {% if data.product_type == "fan" %}selected{% endif %}>Fan</option>
+        <option value="microwave" {% if data.product_type == "microwave" %}selected{% endif %}>Microwave Oven</option>
+        <option value="mixer" {% if data.product_type == "mixer" %}selected{% endif %}>Mixer Grinder</option>
+        <option value="iron_box" {% if data.product_type == "iron_box" %}selected{% endif %}>Iron Box</option>
+        <option value="water_purifier" {% if data.product_type == "water_purifier" %}selected{% endif %}>Water Purifier</option>
+        <option value="vacuum_cleaner" {% if data.product_type == "vacuum_cleaner" %}selected{% endif %}>Vacuum Cleaner</option>
+        {% endif %}
+      </select>
+      <p onclick="activate(this)">Edit</p>
+    </div>
+    <div class="input-box">
+      <label>Product Price:</label>
+      <input type="number" name="price" value="{{ data.product_price }}"  disabled />
+      <p onclick="activate(this)">Edit</p>
+    </div>
+    <div class="input-box">
+      <label>Product Stock:</label>
+      <input type="text" name="stock" value="{{ data.product_stock }}" disabled />
+      <p onclick="activate(this)">Edit</p>
+    </div>
+    <div class="input-box">
+      <label>Product Description:</label>
+      <textarea name="desc" cols="8" rows="5">{{ data.product_description }}</textarea>
+    </div>
+    <div class="input-box">
+      <label>Current Image:</label>
+      <img src="/media/{{ data.product_image }}" width="120px" height="120px" style="margin-bottom: 10px;"/>
+      <input type="file" name="image" value="{{ data.product_image }}" multiple disabled/>
+      <p onclick="activate(this)">Edit</p>
+    </div>
+    <div class="input-box">
+      <label>Current Video:
+      </label>
+      {% if data.product_video %}
+      <video width="200" controls>
+        <source src="/media/{{ data.product_video }}" type="video/mp4" />
+      </video>
+      <input type="file" name="video" accept="video/*" disabled/>
+      <p onclick="activate(this)">Edit</p>
+      {% else %} 
+      <span>No video uploaded</span>
+      <input type="file" name="video" accept="video/*" disabled/>
+      <p onclick="activate(this)">Edit</p>
+      {% endif %}
+    </div>
+    <div class="btns">
+      <button type="subimt" onclick="allupdate()" width="200px">Submit</button>
+      <a href="{% url 'manage' %}">Go To Back</a>
+    </div>
+
+    {% endif %}
+  </form>
+</div>
+
+<script src="{% static 'js/customer.js' %}"></script>
+
+{% endblock %}

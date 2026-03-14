@@ -1,0 +1,132 @@
+/* ================= PAGE WRAPPER ================= */
+.buy-page {
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  background: #f5f6fa;
+}
+
+/* ================= MAIN CONTAINER ================= */
+.product-buy {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ================= ADDRESS CARD ================= */
+.pro-add {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  border: 2px solid #000;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ================= ADDRESS SECTION ================= */
+.add p {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 15px 0 10px;
+  color: #111;
+}
+
+.add label {
+  display: block;
+  margin: 10px 0 4px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}
+
+/* CURRENT ADDRESS TEXTAREA */
+.c_add {
+  width: 100%;
+  height: 90px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid #000;
+  background: #f0f0f0;
+  resize: none;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+/* INPUT FIELDS */
+.add input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 2px solid #000;
+  font-size: 14px;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+/* INPUT FOCUS */
+.add input:focus {
+  background: #fff;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+}
+
+/* ================= BUTTON SECTION ================= */
+[btn-s] {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+/* COMMON BUTTON STYLE */
+[btn-s] button,
+[btn-s] a {
+  flex: 1;
+  padding: 14px 0;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  border: 2px solid #000;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+/* CONTINUE BUTTON */
+[btn-s] button {
+  background: #000;
+  color: #fff;
+}
+
+[btn-s] button:hover {
+  background: #333;
+  transform: scale(1.05);
+}
+
+/* CANCEL BUTTON */
+[btn-s] a {
+  background: #fff;
+  color: #000;
+}
+
+[btn-s] a:hover {
+  background: #000;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .product-buy {
+    width: 90%;
+  }
+}
+
+@media (max-width: 600px) {
+  [btn-s] {
+    flex-direction: column;
+  }
+}
