@@ -1,0 +1,125 @@
+/* ================= FEEDBACK PAGE CONTAINER ================= */
+.feed-back {
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f6fa;
+  padding: 30px 15px;
+}
+
+/* ================= FORM BOX ================= */
+.form {
+  width: 100%;
+  max-width: 500px;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border: 2px solid #000;
+}
+
+/* ================= FORM ================= */
+.form form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ================= FORM DATA ================= */
+.form-data {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+.form-data label {
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #222;
+}
+
+/* TEXTAREA */
+.form-data textarea {
+  resize: none;
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 2px solid #000;
+  outline: none;
+  background: #f8f8f8;
+  transition: 0.3s ease;
+}
+
+.form-data textarea:focus {
+  background: #fff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
+}
+
+/* FILE INPUTS */
+.form-data input[type='file'] {
+  padding: 8px;
+  border-radius: 8px;
+  border: 2px solid #000;
+  background: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* ================= BUTTONS ================= */
+.btn {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.btn input {
+  flex: 1;
+  padding: 12px 0;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border: 2px solid #000;
+  transition: 0.3s ease;
+}
+
+/* SUBMIT BUTTON */
+.btn input[type='submit'] {
+  background: #000;
+  color: #fff;
+}
+
+.btn input[type='submit']:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+/* CLEAR BUTTON */
+.btn input[type='reset'] {
+  background: #fff;
+  color: #000;
+}
+
+.btn input[type='reset']:hover {
+  background: #000;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 600px) {
+  .form {
+    padding: 25px;
+  }
+
+  .btn {
+    flex-direction: column;
+  }
+
+  .btn input {
+    width: 100%;
+  }
+}

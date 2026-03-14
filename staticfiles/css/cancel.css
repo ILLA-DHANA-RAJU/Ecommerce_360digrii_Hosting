@@ -1,0 +1,110 @@
+/* ================= CANCEL PAGE WRAPPER ================= */
+.cancel-reason {
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f6fa;
+  padding: 20px;
+}
+
+/* ================= FORM BOX ================= */
+.cancel-reason form {
+  width: 100%;
+  max-width: 500px;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+  border: 2px solid #e0e0e0;
+}
+
+/* ================= REASON FIELD ================= */
+.reason {
+  margin-bottom: 25px;
+}
+
+.reason label {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.reason textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 12px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 2px solid #000;
+  resize: none;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.reason textarea:focus {
+  border-color: #000;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+/* ================= BUTTONS ================= */
+.btns {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+/* SUBMIT BUTTON */
+.btns button {
+  flex: 1;
+  padding: 12px 0;
+  border-radius: 10px;
+  border: 2px solid #b30000;
+  background: #b30000;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btns button:hover {
+  background: #e94646;
+  transform: scale(1.05);
+}
+
+/* GO BACK LINK */
+.btns a {
+  flex: 1;
+  padding: 12px 0;
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid #000;
+  background: #fff;
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.btns a:hover {
+  background: #000;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 600px) {
+  .cancel-reason form {
+    padding: 22px;
+  }
+
+  .btns {
+    flex-direction: column;
+  }
+}

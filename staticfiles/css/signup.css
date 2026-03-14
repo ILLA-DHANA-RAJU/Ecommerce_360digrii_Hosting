@@ -1,0 +1,89 @@
+/* MAIN CONTAINER */
+.signup-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/* SIGNUP BOX */
+.signup-box {
+  width: 450px;
+  background: white;
+  padding: 35px 30px;
+  border-radius: 12px;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.signup-box h1 {
+  margin-bottom: 25px;
+  font-size: 32px;
+  color: #111;
+}
+
+/* INPUT FIELDS */
+.signup-box input[type='text'],
+.signup-box input[type='email'],
+.signup-box input[type='password'],
+.signup-box input[type='number'],
+.signup-box input[type='file'] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.signup-box input:focus {
+  border-color: #111;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* BUTTONS */
+.signup-box input[type='submit'],
+.signup-box input[type='reset'] {
+  width: 48%;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  border: none;
+  transition: 0.3s;
+}
+
+.signup-box input[type='submit'] {
+  background: #111;
+  color: white;
+}
+
+.signup-box input[type='submit']:hover {
+  background: #333;
+}
+
+.signup-box input[type='reset'] {
+  background: #ddd;
+}
+
+.signup-box input[type='reset']:hover {
+  background: #bbb;
+}
+
+/* SIGNIN LINK */
+.singin {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.singin a {
+  color: #111;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.singin a:hover {
+  text-decoration: underline;
+}

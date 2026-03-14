@@ -1,0 +1,86 @@
+/* MAIN CONTAINER */
+.login-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+/* LOGIN BOX */
+.login-box {
+  width: 380px;
+  background: white;
+  padding: 35px 30px;
+  border-radius: 12px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.login-box h1 {
+  margin-bottom: 25px;
+  font-size: 32px;
+  color: #111;
+}
+
+/* INPUT FIELDS */
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.login-box input:focus {
+  border-color: #111;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* BUTTONS */
+.submit-btn,
+.reset-btn {
+  width: 48%;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  border: none;
+  transition: 0.3s;
+}
+
+.submit-btn {
+  background: #111;
+  color: white;
+}
+
+.submit-btn:hover {
+  background: #333;
+}
+
+.reset-btn {
+  background: #ddd;
+  color: black;
+}
+
+.reset-btn:hover {
+  background: #bbb;
+}
+
+/* SIGNUP TEXT */
+.signup-text {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.signup-text a {
+  color: #111;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.signup-text a:hover {
+  text-decoration: underline;
+}

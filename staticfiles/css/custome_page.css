@@ -1,0 +1,93 @@
+/* MAIN CONTAINER */
+.selection-container {
+  width: 90%;
+  margin: 40px auto;
+  text-align: center;
+}
+
+/* TITLE */
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 18px;
+  margin-bottom: 40px;
+  color: #444;
+}
+
+/* PANEL WRAPPER */
+.panel-wrapper {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* EACH PANEL */
+.panel {
+  width: 40%;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.15);
+  transition: 0.3s ease;
+}
+
+.panel:hover {
+  transform: translateY(-5px);
+}
+
+/* PANEL TITLES */
+.panel h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.panel p {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 25px;
+}
+
+/* BUTTONS */
+.login-btn {
+  display: inline-block;
+  padding: 12px 25px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+/* Vendor Button */
+.vendor-btn {
+  background: #ffe600;
+  color: #000;
+}
+
+.vendor-btn:hover {
+  background: #ffcc00;
+  transform: scale(1.04);
+}
+
+/* Customer Button */
+.customer-btn {
+  background: #000;
+  color: #fff;
+}
+
+.customer-btn:hover {
+  transform: scale(1.04);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 900px) {
+  .panel {
+    width: 90%;
+  }
+}
