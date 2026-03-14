@@ -27,10 +27,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "ecommerce-website-xw4u.onrender.com",
+    ".onrender.com",
     "localhost",
     "127.0.0.1"
 ]
 
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://ecommerce-website-xw4u.onrender.com"
+]
 
 # Application definition
 
