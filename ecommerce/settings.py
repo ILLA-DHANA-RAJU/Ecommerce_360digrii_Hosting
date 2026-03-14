@@ -33,10 +33,6 @@ ALLOWED_HOSTS = [
 ]
 
 
-CSRF_TRUSTED_ORIGINS = [
-    "https://ecommerce-website-xw4u.onrender.com"
-]
-
 # Application definition
 
 INSTALLED_APPS = [
