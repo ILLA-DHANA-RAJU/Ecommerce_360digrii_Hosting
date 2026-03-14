@@ -3,7 +3,7 @@ setInterval(function () {
   if (msg) {
     msg.style.display = 'none'
   }
-}, 10000)
+}, 2000)
 
 function acc() {
   const vis = document.getElementById('id2')
