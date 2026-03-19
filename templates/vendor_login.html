@@ -10,13 +10,13 @@
     {% endfor %} {% endif %}
     <h1>Vendor Login</h1>
 
-    <form method="POST" action="#">
+    <form method="POST" action="{%{ url 'vendor_login' }%}">
       {% csrf_token %}
 
       <input type="email" name="email" placeholder="Email" required />
       <input type="password" name="password" placeholder="Password" required />
 
-      <button type="submit" class="submit-btn" onclick="autoReloadAfterCart(event)">Login</button>
+      <button type="submit" class="submit-btn">Login</button>
     </form>
 
     <p class="signup-text">Not registered? <a href="{% url 'vendor_signin' %}" onclick="acc()">Signup</a></p>

@@ -12,8 +12,8 @@ function acc() {
   }
 }
 
-function autoReloadAfterCart(event) {
-  setTimeout(() => {
-    window.location.reload()
-  }, 1000)
-}
+// function autoReloadAfterCart(event) {
+//   setTimeout(() => {
+//     window.location.reload()
+//   }, 50000)
+// }

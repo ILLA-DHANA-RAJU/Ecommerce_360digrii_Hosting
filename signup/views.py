@@ -21,13 +21,22 @@ def signup_view(request):
     password = request.POST.get('password')
     
     if not firstname or not lastname or not email or not mobile or not address or not zipcode or not image:
-      return messages.error(request, 'Please fill all requeired fields')
+      return render(request, "signup.html", {"error": "Please fill all requeired fields"})
     
     if Customer.objects.filter(email = email).exists():
-      return messages.error(request, "Email already existed try another email ✉")
+      return render(request, "signup.html", {"error": "Email already existed try another email ✉"})
     
     if Vendor.objects.filter(email = email).exists():
-      return messages.error(request, "Email already exited in vendor data use another email ✉")
+      return render(request, "signup.html", {"error": "Email already exited in vendor data use another email ✉"})
+    
+    # if not firstname or not lastname or not email or not mobile or not address or not zipcode or not image:
+    #   return messages.error(request, 'Please fill all requeired fields')
+    
+    # if Customer.objects.filter(email = email).exists():
+    #   return messages.error(request, "Email already existed try another email ✉")
+    
+    # if Vendor.objects.filter(email = email).exists():
+    #   return messages.error(request, "Email already exited in vendor data use another email ✉")
     
     hash_password = make_password(password)
   
